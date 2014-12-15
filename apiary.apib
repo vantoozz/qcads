@@ -1,46 +1,33 @@
 FORMAT: 1A
 
 # QC ads API
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+This document describes QC ads API 
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Credentials
+To use the API you need to obtain application credentials — ``APP_ID`` and ``APP_SECRET`` 
 
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
+# Request
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
+### URL
+Base URL is `` https://{domain}/api/v1/ ``
 
-### Create a Note [POST]
-+ Request (application/json)
+### Required field
+Every request must contain following fields:
 
-        { "title": "Buy cheese and bread for breakfast." }
+* ``app_id`` — ``APP_ID`` credential
+* ``sign`` — request sign
+* ``rnd`` — random string
 
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
-
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-### Retrieve a Note [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
+### How to calculate ``sign`` field with PHP
+```
+$sign = '';
+ksort($params);
+foreach ($params as $key => $value) {
+    if ('sign' === $key) {
+        continue;
+    }
+    $sign .= $key . '=' . $value;
+}
+$sign .= 'APP_SECRET';
+$sign = sha1($sign);
+```
