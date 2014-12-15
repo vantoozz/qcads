@@ -103,14 +103,25 @@ There are limits of requests per hour.
 Campaigns-related resources of *QC Ads API*.
 
 
-## Campaign List [/api/v1/campaigns]
+## Campaign Collection [/api/v1/campaigns]
 List of Campaign objects.
 
-
 ### Retrieve a Campaign List [GET]
-+ Response 200
++ Response 200 (application/json)
 
     [Single Campaign][]
+    
+### Create Campaign [POST]
++ Request 
+        {
+            "message" : "Hello World." 
+        }
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "data": [Single Campaign][]
+        }
 
 ## Single Campaign [/api/v1/campaigns/{id}]
 A single Campaign object.
@@ -118,20 +129,30 @@ A single Campaign object.
 + Parameters
     + id (required, integer) ... ID of the Campaign
 
-+ Model (application/json)
++ Model
 
 
     + Body
 
             {
-                "id": 123,
-                "title": "Campaign Title"
+                "success": true,
+                "data":{
+                    "id": 123,
+                    "title": "Campaign Title"
+                }
             }
 
 ### Retrieve a Single Campaign [GET]
-+ Response 200
++ Response 200 (application/json)
+
+    [Single Campaign][]
+        
+### Update Campaign [PUT]
++ Request 
 
         {
-            "success": true,
-            "data": [Single Campaign][]
+            "message" : "Hello World." 
         }
++ Response 200
+
+    [Single Campaign][]
