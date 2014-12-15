@@ -54,25 +54,44 @@ We'll respond with one of the following status codes:
 
 ### Envelope
 
-All API responses will be returned in the following envelope, with the cursor and errors only present when relevant:
+All API responses will be returned in JSON format in one of following envelope:
+
+##### Success Response
 ```
 {
-   "data": {
-      "integer": 12345,
-      "string": "John",
-      "bool": true,
-      "null": null,
-      "array": [1,2,3],
-      "object": {
-        "one": 1,
-        "two": 2,
-        "three": 3
-      }
-   },
-   "cursor": {},
-   "errors": []
+    "success": true,
+    "data": {
+        "integer": 12345,
+        "string": "John",
+        "bool": true,
+        "null": null,
+        "array": [1,2,3],
+        "object": {
+            "one": 1,
+            "two": 2,
+            "three": 3
+        }
+    }
 }
 ```
+
+##### Failed Response
+```
+{
+    "success": false,
+    "error": {
+        "code": 42,
+        "message": "Error message"
+    }
+}
+```
+
+# Error Codes
+
+|Code|Description|
+|---|:--|
+|9000|Unknown error.|
+|9001|Concrete error.|
 
 # Limits
 
