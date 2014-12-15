@@ -113,15 +113,13 @@ List of Campaign objects.
     
 ### Create Campaign [POST]
 + Request 
-        {
-            "message" : "Hello World." 
-        }
-+ Response 200 (application/json)
 
         {
-            "success": true,
-            "data": [Single Campaign][]
+            "name" : "Campaign Name" 
         }
++ Response 201 (application/json)
+
+    [Single Campaign][]
 
 ## Single Campaign [/api/v1/campaigns/{id}]
 A single Campaign object.
@@ -131,14 +129,16 @@ A single Campaign object.
 
 + Model
 
-
     + Body
 
             {
                 "success": true,
-                "data":{
+                "data": {
                     "id": 123,
-                    "title": "Campaign Title"
+                    "name": "Campaign Name"
+                    "balance": 12345.000,
+                    "discount": 12.50,
+                    "active": true
                 }
             }
 
@@ -151,7 +151,7 @@ A single Campaign object.
 + Request 
 
         {
-            "message" : "Hello World." 
+            "name" : "Campaign Name" 
         }
 + Response 200
 
