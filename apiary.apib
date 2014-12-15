@@ -109,7 +109,32 @@ List of Campaign objects.
 ### Retrieve a Campaign List [GET]
 + Response 200 (application/json)
 
-    [Single Campaign][]
+            {
+                "success": true,
+                "data": [
+                    {
+                        "id": 123,
+                        "name": "Campaign Name"
+                        "balance": 12345.000,
+                        "discount": 12.50,
+                        "active": true
+                    },
+                    {
+                        "id": 234,
+                        "name": "Other Campaign Name"
+                        "balance": 23435.000,
+                        "discount": 0,
+                        "active": false
+                    },
+                    {
+                        "id": 345,
+                        "name": "One More Campaign"
+                        "balance": 6543.000,
+                        "discount": 1.00,
+                        "active": true
+                    },
+                ]
+            }
     
 ### Create Campaign [POST]
 + Request 
