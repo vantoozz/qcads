@@ -102,7 +102,6 @@ There are limits of requests per hour.
 # Group Campaigns 
 Campaigns-related resources of *QC Ads API*.
 
-
 ## Campaign Collection [/api/v1/campaigns]
 List of Campaign objects.
 
@@ -173,9 +172,11 @@ A single Campaign object.
     [Single Campaign][]
         
 ### Update Campaign [PUT]
-+ Request 
++ Request (application/json)
 
-        name: Campaign Name
+        {
+            "name" : "Campaign Name" 
+        }
         
 + Response 200
 
